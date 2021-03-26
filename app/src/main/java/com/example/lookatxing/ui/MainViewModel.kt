@@ -21,9 +21,11 @@ class MainViewModel @Inject constructor(
     private val gitHubRepository: LiveData<List<Github>>
         get() = _gitHubRepository
 
+    private var page = 0
+
     fun retrieveListGitHub() {
         viewModelScope.launch {
-            getGithubListUseCase.execute()
+            getGithubListUseCase.execute(++page)
         }
     }
 

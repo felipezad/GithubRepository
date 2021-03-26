@@ -21,7 +21,7 @@ class GithubRepository @Inject constructor(
         }
     }
 
-    override suspend fun getElementsFromApi(numberOfElements: Int): ActionResult<List<Github>> {
+    override suspend fun getElementsFromApi(page: Int): ActionResult<List<Github>> {
         return try {
             val value: List<Github> = mapper.mapTo(xingService.requestRepos())
             ActionResult.Success(value)
