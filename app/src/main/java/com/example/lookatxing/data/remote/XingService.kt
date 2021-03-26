@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface XingService {
 
-    @GET("/")
+    @GET("repos")
     suspend fun requestRepos(): GitHubResponse
 }
