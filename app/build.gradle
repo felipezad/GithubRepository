@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -15,15 +16,18 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField 'String', 'BASE_URL', '"https://api.github.com/orgs/xing/repos"'
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [
+                arguments += [
                         "room.schemaLocation"  : "$projectDir/schemas".toString(),
                         "room.incremental"     : "true",
                         "room.expandProjection": "true"]
             }
         }
+
     }
 
     buildTypes {
@@ -194,8 +198,7 @@ ext {
 }
 
 dependencies {
-    implementation project(":common:core")
-    implementation project(":common:core")
+    implementation project(":common:domain")
     implementation libraries
     implementation arch_libraries
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
