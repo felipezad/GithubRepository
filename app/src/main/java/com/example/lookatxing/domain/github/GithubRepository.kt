@@ -4,15 +4,24 @@ import com.example.domain.ActionResult
 import com.example.lookatxing.data.local.XingDao
 import com.example.lookatxing.data.remote.XingService
 import com.example.lookatxing.domain.Repository
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GithubRepository @Inject constructor(
+class GithubRepository(
     private val mapper: GithubMapper,
     private val xingService: XingService,
-    private val xingDao: XingDao
+    private val xingDao: XingDao,
+    private val dispatcherThread: CoroutineDispatcher = Dispatchers.IO
 ) : Repository<Github> {
+
+    @Inject
+    constructor(
+        mapper: GithubMapper,
+        xingService: XingService,
+        xingDao: XingDao
+    ) : this(mapper, xingService, xingDao, Dispatchers.IO)
 
     override suspend fun insertDataIntoRoom(data: Github): ActionResult<Boolean> {
         return try {
@@ -26,7 +35,7 @@ class GithubRepository @Inject constructor(
     override suspend fun getElementsFromApi(page: Int): ActionResult<List<Github>> {
         return try {
             val value: List<Github> = mapper.mapTo(xingService.requestRepos())
-            withContext(Dispatchers.IO) { value.forEach { xingDao.insert(it) } }
+            withContext(dispatcherThread) { value.forEach { insertDataIntoRoom(it) } }
             ActionResult.Success(value)
         } catch (e: Exception) {
             ActionResult.Error(e)
