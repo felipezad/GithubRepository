@@ -1,4 +1,4 @@
-package com.example.lookatxing.ui
+package com.example.lookatxing.ui.main
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -19,7 +19,8 @@ class MainViewModel @Inject constructor(
     private val getGithubListUseCase: GetGitHubListUseCase
 ) : ViewModel() {
     private val _gitHubRepository = MutableLiveData<List<Github>>()
-    private val gitHubRepository: LiveData<List<Github>>
+
+    val gitHubRepository: LiveData<List<Github>>
         get() = _gitHubRepository
 
     private var page = 0
