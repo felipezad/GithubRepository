@@ -1,4 +1,4 @@
-include ':common:domain'
+include ':common:model'
 include ':common:core'
 include ':app'
 rootProject.name = "LookAtXing"

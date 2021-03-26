@@ -33,6 +33,7 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
+            testCoverageEnabled true
         }
     }
     compileOptions {
@@ -198,7 +199,8 @@ ext {
 }
 
 dependencies {
-    implementation project(":common:domain")
+    implementation project(':common:model')
+    implementation project(':common:core')
     implementation libraries
     implementation arch_libraries
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
