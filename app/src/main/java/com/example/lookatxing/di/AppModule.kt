@@ -1,5 +1,6 @@
 package com.example.lookatxing.di
 
+import com.example.lookatxing.BuildConfig
 import com.example.lookatxing.data.XingService
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): XingService {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
             .build()
