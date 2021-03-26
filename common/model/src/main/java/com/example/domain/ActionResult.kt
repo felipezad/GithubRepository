@@ -1,3 +1,5 @@
+package com.example.domain
+
 sealed class ActionResult<out R> {
 
     data class Success<out T>(val data: T) : ActionResult<T>()

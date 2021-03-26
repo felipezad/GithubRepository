@@ -1,6 +1,6 @@
 package com.example.lookatxing.domain
 
-import ActionResult
+import com.example.domain.ActionResult
 
 interface UseCaseConsumerProducer<in T, out K : Any> : UseCase {
     fun execute(param: T): ActionResult<K>

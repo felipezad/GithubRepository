@@ -14,5 +14,4 @@ interface XingDao {
 
     @Query("SELECT * FROM ${Github.TABLE_NAME}")
     suspend fun getFavoriteHeroes(): List<Github>
-
 }
