@@ -3,11 +3,11 @@ package com.example.lookatxing.domain
 import com.example.domain.ActionResult
 
 interface UseCaseConsumerProducer<in T, out K : Any> : UseCase {
-    fun execute(param: T): ActionResult<K>
+    suspend fun execute(param: T): ActionResult<K>
 }
 
 interface UseCaseProducer<out K : Any> : UseCase {
-    fun execute(): ActionResult<K>
+    suspend fun execute(): ActionResult<K>
 }
 
 interface UseCase {

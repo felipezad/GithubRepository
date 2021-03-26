@@ -1,9 +1,9 @@
 package com.example.lookatxing.domain
 
 interface Mapper<in K, out T> {
-    fun to(from: K): T
+    fun mapTo(from: K): T
 
     fun to(from: List<K>): List<T> {
-        return from.map { to(it) }
+        return from.map { mapTo(it) }
     }
 }

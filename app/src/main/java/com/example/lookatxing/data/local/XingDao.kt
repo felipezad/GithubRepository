@@ -13,5 +13,5 @@ interface XingDao {
     suspend fun delete(hero: Github)
 
     @Query("SELECT * FROM ${Github.TABLE_NAME}")
-    suspend fun getFavoriteHeroes(): List<Github>
+    suspend fun getRepositories(): List<Github>
 }

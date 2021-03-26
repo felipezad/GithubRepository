@@ -12,7 +12,9 @@ import kotlinx.parcelize.Parcelize
 data class Github(
     val nameRepository: String,
     val description: String,
-    val owner: String
+    val owner: String,
+    val ownerAvatarURL: String,
+    val fork: Boolean
 ) : Parcelable {
     companion object {
         const val TABLE_NAME = "github"
