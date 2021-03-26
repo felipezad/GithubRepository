@@ -1,7 +1,10 @@
 package com.example.lookatxing.di
 
+import android.app.Application
+import com.bumptech.glide.Glide
 import com.example.lookatxing.BuildConfig
 import com.example.lookatxing.data.XingService
+import com.example.lookatxing.data.local.XingDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,4 +39,16 @@ object NetworkModule {
             .readTimeout(60L, TimeUnit.SECONDS)
             .build()
     }
+
+    @Singleton
+    @Provides
+    fun provideRequestManagerGlide(application: Application) = Glide.with(application)
+
+    @Singleton
+    @Provides
+    fun provideDatabase(application: Application) = XingDatabase.getInstance(application)
+
+    @Singleton
+    @Provides
+    fun provideHeroDao(database: XingDatabase) = database.xingDao()
 }

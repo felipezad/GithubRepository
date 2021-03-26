@@ -12,7 +12,7 @@ import com.example.lookatxing.domain.github.Github
 )
 abstract class XingDatabase : RoomDatabase() {
 
-    abstract fun heroDao(): XingDao
+    abstract fun xingDao(): XingDao
 
     companion object {
         private const val DB_NAME = "xing_database"
