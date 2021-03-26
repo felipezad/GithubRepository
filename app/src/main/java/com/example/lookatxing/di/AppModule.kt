@@ -3,7 +3,7 @@ package com.example.lookatxing.di
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.example.lookatxing.BuildConfig
-import com.example.lookatxing.data.XingService
+import com.example.lookatxing.data.remote.XingService
 import com.example.lookatxing.data.local.XingDatabase
 import dagger.Module
 import dagger.Provides
