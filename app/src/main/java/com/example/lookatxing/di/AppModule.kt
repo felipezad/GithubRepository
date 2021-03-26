@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.example.lookatxing.BuildConfig
 import com.example.lookatxing.data.local.XingDatabase
 import com.example.lookatxing.data.remote.XingService
+import com.example.util.WhenNullReturnEmptyFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -25,6 +26,7 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): XingService {
         val moshi = Moshi.Builder()
+            .add(WhenNullReturnEmptyFactory)
             .addLast(KotlinJsonAdapterFactory())
             .build()
 

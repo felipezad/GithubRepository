@@ -1,223 +1,293 @@
 package com.example.domain
 
+import com.example.annotations.WhenNullReturnEmpty
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-
-
-class GitHubResponse : ArrayList<GitHubResponseItem>()
 
 @JsonClass(generateAdapter = true)
 data class GitHubResponseItem(
     @Json(name = "archive_url")
-    val archiveUrl: String,
+    @WhenNullReturnEmpty
+    val archiveUrl: String = "",
     @Json(name = "archived")
-    val archived: Boolean,
+    val archived: Boolean = false,
     @Json(name = "assignees_url")
-    val assigneesUrl: String,
+    @WhenNullReturnEmpty
+    val assigneesUrl: String = "",
     @Json(name = "blobs_url")
-    val blobsUrl: String,
+    @WhenNullReturnEmpty
+    val blobsUrl: String = "",
     @Json(name = "branches_url")
-    val branchesUrl: String,
+    @WhenNullReturnEmpty
+    val branchesUrl: String = "",
     @Json(name = "clone_url")
-    val cloneUrl: String,
+    @WhenNullReturnEmpty
+    val cloneUrl: String = "",
     @Json(name = "collaborators_url")
-    val collaboratorsUrl: String,
+    @WhenNullReturnEmpty
+    val collaboratorsUrl: String = "",
     @Json(name = "comments_url")
-    val commentsUrl: String,
+    @WhenNullReturnEmpty
+    val commentsUrl: String = "",
     @Json(name = "commits_url")
-    val commitsUrl: String,
+    @WhenNullReturnEmpty
+    val commitsUrl: String = "",
     @Json(name = "compare_url")
-    val compareUrl: String,
+    @WhenNullReturnEmpty
+    val compareUrl: String = "",
     @Json(name = "contents_url")
-    val contentsUrl: String,
+    @WhenNullReturnEmpty
+    val contentsUrl: String = "",
     @Json(name = "contributors_url")
-    val contributorsUrl: String,
+    @WhenNullReturnEmpty
+    val contributorsUrl: String = "",
     @Json(name = "created_at")
-    val createdAt: String,
+    @WhenNullReturnEmpty
+    val createdAt: String = "",
     @Json(name = "default_branch")
-    val defaultBranch: String,
+    @WhenNullReturnEmpty
+    val defaultBranch: String = "",
     @Json(name = "deployments_url")
-    val deploymentsUrl: String,
+    @WhenNullReturnEmpty
+    val deploymentsUrl: String = "",
     @Json(name = "description")
-    val description: String,
+    @WhenNullReturnEmpty
+    val description: String = "",
     @Json(name = "disabled")
-    val disabled: Boolean,
+    val disabled: Boolean = false,
     @Json(name = "downloads_url")
-    val downloadsUrl: String,
+    @WhenNullReturnEmpty
+    val downloadsUrl: String = "",
     @Json(name = "events_url")
-    val eventsUrl: String,
+    @WhenNullReturnEmpty
+    val eventsUrl: String = "",
     @Json(name = "fork")
-    val fork: Boolean,
+    val fork: Boolean = false,
     @Json(name = "forks")
-    val forks: Int,
+    val forks: Int = 0,
     @Json(name = "forks_count")
-    val forksCount: Int,
+    val forksCount: Int = 0,
     @Json(name = "forks_url")
-    val forksUrl: String,
+    @WhenNullReturnEmpty
+    val forksUrl: String = "",
     @Json(name = "full_name")
-    val fullName: String,
+    @WhenNullReturnEmpty
+    val fullName: String = "",
     @Json(name = "git_commits_url")
-    val gitCommitsUrl: String,
+    @WhenNullReturnEmpty
+    val gitCommitsUrl: String = "",
     @Json(name = "git_refs_url")
-    val gitRefsUrl: String,
+    @WhenNullReturnEmpty
+    val gitRefsUrl: String = "",
     @Json(name = "git_tags_url")
-    val gitTagsUrl: String,
+    @WhenNullReturnEmpty
+    val gitTagsUrl: String = "",
     @Json(name = "git_url")
-    val gitUrl: String,
+    @WhenNullReturnEmpty
+    val gitUrl: String = "",
     @Json(name = "has_downloads")
-    val hasDownloads: Boolean,
+    val hasDownloads: Boolean = false,
     @Json(name = "has_issues")
-    val hasIssues: Boolean,
+    val hasIssues: Boolean = false,
     @Json(name = "has_pages")
-    val hasPages: Boolean,
+    val hasPages: Boolean = false,
     @Json(name = "has_projects")
-    val hasProjects: Boolean,
+    val hasProjects: Boolean = false,
     @Json(name = "has_wiki")
-    val hasWiki: Boolean,
+    val hasWiki: Boolean = false,
     @Json(name = "homepage")
-    val homepage: String?,
+    @WhenNullReturnEmpty
+    val homepage: String = "",
     @Json(name = "hooks_url")
-    val hooksUrl: String,
+    @WhenNullReturnEmpty
+    val hooksUrl: String = "",
     @Json(name = "html_url")
-    val htmlUrl: String,
+    @WhenNullReturnEmpty
+    val htmlUrl: String = "",
     @Json(name = "id")
-    val id: Int,
+    val id: Int = 0,
     @Json(name = "issue_comment_url")
-    val issueCommentUrl: String,
+    @WhenNullReturnEmpty
+    val issueCommentUrl: String = "",
     @Json(name = "issue_events_url")
-    val issueEventsUrl: String,
+    @WhenNullReturnEmpty
+    val issueEventsUrl: String = "",
     @Json(name = "issues_url")
-    val issuesUrl: String,
+    @WhenNullReturnEmpty
+    val issuesUrl: String = "",
     @Json(name = "keys_url")
-    val keysUrl: String,
+    @WhenNullReturnEmpty
+    val keysUrl: String = "",
     @Json(name = "labels_url")
-    val labelsUrl: String,
+    @WhenNullReturnEmpty
+    val labelsUrl: String = "",
     @Json(name = "language")
-    val language: String?,
+    @WhenNullReturnEmpty
+    val language: String = "",
     @Json(name = "languages_url")
-    val languagesUrl: String,
-    @Json(name = "license")
-    val license: License?,
+    @WhenNullReturnEmpty
+    val languagesUrl: String = "",
     @Json(name = "merges_url")
-    val mergesUrl: String,
+    @WhenNullReturnEmpty
+    val mergesUrl: String = "",
     @Json(name = "milestones_url")
-    val milestonesUrl: String,
+    @WhenNullReturnEmpty
+    val milestonesUrl: String = "",
     @Json(name = "mirror_url")
-    val mirrorUrl: Any?,
+    @WhenNullReturnEmpty
+    val mirrorUrl: String? = "",
     @Json(name = "name")
-    val name: String,
+    @WhenNullReturnEmpty
+    val name: String = "",
     @Json(name = "node_id")
-    val nodeId: String,
+    @WhenNullReturnEmpty
+    val nodeId: String = "",
     @Json(name = "notifications_url")
-    val notificationsUrl: String,
+    @WhenNullReturnEmpty
+    val notificationsUrl: String = "",
     @Json(name = "open_issues")
-    val openIssues: Int,
+    val openIssues: Int = 0,
     @Json(name = "open_issues_count")
-    val openIssuesCount: Int,
+    val openIssuesCount: Int = 0,
     @Json(name = "owner")
-    val owner: Owner,
+    val owner: Owner = Owner(),
     @Json(name = "permissions")
-    val permissions: Permissions,
+    val permissions: Permissions = Permissions(),
     @Json(name = "private")
-    val `private`: Boolean,
+    val `private`: Boolean = false,
     @Json(name = "pulls_url")
-    val pullsUrl: String,
+    @WhenNullReturnEmpty
+    val pullsUrl: String = "",
     @Json(name = "pushed_at")
-    val pushedAt: String,
+    @WhenNullReturnEmpty
+    val pushedAt: String = "",
     @Json(name = "releases_url")
-    val releasesUrl: String,
+    @WhenNullReturnEmpty
+    val releasesUrl: String = "",
     @Json(name = "size")
-    val size: Int,
+    val size: Int = 0,
     @Json(name = "ssh_url")
-    val sshUrl: String,
+    @WhenNullReturnEmpty
+    val sshUrl: String = "",
     @Json(name = "stargazers_count")
-    val stargazersCount: Int,
+    val stargazersCount: Int = 0,
     @Json(name = "stargazers_url")
-    val stargazersUrl: String,
+    @WhenNullReturnEmpty
+    val stargazersUrl: String = "",
     @Json(name = "statuses_url")
-    val statusesUrl: String,
+    @WhenNullReturnEmpty
+    val statusesUrl: String = "",
     @Json(name = "subscribers_url")
-    val subscribersUrl: String,
+    @WhenNullReturnEmpty
+    val subscribersUrl: String = "",
     @Json(name = "subscription_url")
-    val subscriptionUrl: String,
+    @WhenNullReturnEmpty
+    val subscriptionUrl: String = "",
     @Json(name = "svn_url")
-    val svnUrl: String,
+    @WhenNullReturnEmpty
+    val svnUrl: String = "",
     @Json(name = "tags_url")
-    val tagsUrl: String,
+    @WhenNullReturnEmpty
+    val tagsUrl: String = "",
     @Json(name = "teams_url")
-    val teamsUrl: String,
+    @WhenNullReturnEmpty
+    val teamsUrl: String = "",
     @Json(name = "trees_url")
-    val treesUrl: String,
+    @WhenNullReturnEmpty
+    val treesUrl: String = "",
     @Json(name = "updated_at")
-    val updatedAt: String,
+    @WhenNullReturnEmpty
+    val updatedAt: String = "",
     @Json(name = "url")
-    val url: String,
+    @WhenNullReturnEmpty
+    val url: String = "",
     @Json(name = "watchers")
-    val watchers: Int,
+    val watchers: Int = 0,
     @Json(name = "watchers_count")
-    val watchersCount: Int
+    val watchersCount: Int = 0
 )
 
 @JsonClass(generateAdapter = true)
 data class License(
     @Json(name = "key")
-    val key: String,
+    @WhenNullReturnEmpty
+    val key: String = "",
     @Json(name = "name")
-    val name: String,
+    @WhenNullReturnEmpty
+    val name: String = "",
     @Json(name = "node_id")
-    val nodeId: String,
+    @WhenNullReturnEmpty
+    val nodeId: String = "",
     @Json(name = "spdx_id")
-    val spdxId: String,
+    @WhenNullReturnEmpty
+    val spdxId: String = "",
     @Json(name = "url")
-    val url: String
+    @WhenNullReturnEmpty
+    val url: String = ""
 )
 
 @JsonClass(generateAdapter = true)
 data class Owner(
     @Json(name = "avatar_url")
-    val avatarUrl: String,
+    @WhenNullReturnEmpty
+    val avatarUrl: String = "",
     @Json(name = "events_url")
-    val eventsUrl: String,
+    @WhenNullReturnEmpty
+    val eventsUrl: String = "",
     @Json(name = "followers_url")
-    val followersUrl: String,
+    @WhenNullReturnEmpty
+    val followersUrl: String = "",
     @Json(name = "following_url")
-    val followingUrl: String,
+    @WhenNullReturnEmpty
+    val followingUrl: String = "",
     @Json(name = "gists_url")
-    val gistsUrl: String,
+    @WhenNullReturnEmpty
+    val gistsUrl: String = "",
     @Json(name = "gravatar_id")
-    val gravatarId: String,
+    @WhenNullReturnEmpty
+    val gravatarId: String = "",
     @Json(name = "html_url")
-    val htmlUrl: String,
+    @WhenNullReturnEmpty
+    val htmlUrl: String = "",
     @Json(name = "id")
-    val id: Int,
+    val id: Int = 0,
     @Json(name = "login")
-    val login: String,
+    @WhenNullReturnEmpty
+    val login: String = "",
     @Json(name = "node_id")
-    val nodeId: String,
+    @WhenNullReturnEmpty
+    val nodeId: String = "",
     @Json(name = "organizations_url")
-    val organizationsUrl: String,
+    @WhenNullReturnEmpty
+    val organizationsUrl: String = "",
     @Json(name = "received_events_url")
-    val receivedEventsUrl: String,
+    @WhenNullReturnEmpty
+    val receivedEventsUrl: String = "",
     @Json(name = "repos_url")
-    val reposUrl: String,
+    @WhenNullReturnEmpty
+    val reposUrl: String = "",
     @Json(name = "site_admin")
-    val siteAdmin: Boolean,
+    val siteAdmin: Boolean = false,
     @Json(name = "starred_url")
-    val starredUrl: String,
+    @WhenNullReturnEmpty
+    val starredUrl: String = "",
     @Json(name = "subscriptions_url")
-    val subscriptionsUrl: String,
+    @WhenNullReturnEmpty
+    val subscriptionsUrl: String = "",
     @Json(name = "type")
-    val type: String,
+    @WhenNullReturnEmpty
+    val type: String = "",
     @Json(name = "url")
-    val url: String
+    @WhenNullReturnEmpty
+    val url: String = ""
 )
 
 @JsonClass(generateAdapter = true)
 data class Permissions(
     @Json(name = "admin")
-    val admin: Boolean,
+    val admin: Boolean = false,
     @Json(name = "pull")
-    val pull: Boolean,
+    val pull: Boolean = false,
     @Json(name = "push")
-    val push: Boolean
+    val push: Boolean = false
 )
