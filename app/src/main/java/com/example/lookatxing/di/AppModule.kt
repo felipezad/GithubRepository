@@ -3,8 +3,10 @@ package com.example.lookatxing.di
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.example.lookatxing.BuildConfig
-import com.example.lookatxing.data.remote.XingService
 import com.example.lookatxing.data.local.XingDatabase
+import com.example.lookatxing.data.remote.XingService
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,9 +24,13 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): XingService {
+        val moshi = Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()
             .create(XingService::class.java)
