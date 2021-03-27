@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.lookatxing.R
 import com.example.lookatxing.databinding.GithubItemListBinding
 import com.example.lookatxing.domain.github.Github
 
@@ -48,6 +50,15 @@ class GithubItemAdapter(
 
         fun bind(gitItem: Github) {
             binding.githubName.text = gitItem.nameRepository
+            binding.githubDescription.text = gitItem.description
+            binding.githubOwner.text = gitItem.owner
+
+            requestManager
+                .load(gitItem.ownerAvatarURL)
+                .placeholder(R.drawable.ic_launcher_foreground)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(binding.githubProfilePicture)
+                .clearOnDetach()
         }
     }
 

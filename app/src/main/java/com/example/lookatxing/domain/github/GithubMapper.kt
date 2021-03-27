@@ -13,7 +13,7 @@ class GithubMapper @Inject constructor() : Mapper<List<GitHubResponseItem>, List
                 id = itemResponse.id,
                 nameRepository = itemResponse.name,
                 description = itemResponse.description,
-                owner = itemResponse.fullName,
+                owner = itemResponse.owner.login,
                 ownerAvatarURL = itemResponse.owner.avatarUrl,
                 fork = itemResponse.fork
             )
