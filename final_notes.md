@@ -27,21 +27,20 @@ It simply loads gitub data from an API and stores it in persistence storage. Git
 
 ## Package Structure
 
-
-+ app
- + data
-   + remote
-   + local
- + di
- + domain
-  + github
- + ui
-  + main
+| --app
+    | -- data
+        | -- remote
+        | -- local
+    | -- di
+    | -- domain
+        | -- github
+    | -- ui
+        | -- main
  
-+ common
- + annotations
- + domain
- + util
+| -- common
+    | -- annotations
+    | -- domain
+    | -- util
     
 ## Architecture
 This app uses [***MVVM and Clean Architecture***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
