@@ -10,7 +10,7 @@ interface XingDao {
     suspend fun insert(repo: Github)
 
     @Delete
-    suspend fun delete(hero: Github)
+    suspend fun delete(github: Github)
 
     @Query("SELECT * FROM ${Github.TABLE_NAME}")
     suspend fun getRepositories(): List<Github>

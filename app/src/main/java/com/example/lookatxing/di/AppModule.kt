@@ -58,5 +58,5 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHeroDao(database: XingDatabase) = database.xingDao()
+    fun provideXingDao(database: XingDatabase) = database.xingDao()
 }
