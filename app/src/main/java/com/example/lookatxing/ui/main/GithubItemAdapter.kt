@@ -53,6 +53,12 @@ class GithubItemAdapter(
             binding.githubDescription.text = gitItem.description
             binding.githubOwner.text = gitItem.owner
 
+            if (gitItem.fork) {
+                with(binding.itemContainer) {
+                    setBackgroundColor(resources.getColor(R.color.teal_200, null))
+                }
+            }
+
             requestManager
                 .load(gitItem.ownerAvatarURL)
                 .placeholder(R.drawable.ic_launcher_foreground)
