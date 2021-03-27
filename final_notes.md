@@ -26,7 +26,7 @@ It simply loads gitub data from an API and stores it in persistence storage. Git
 - [Espresso](https://developer.android.com/training/testing/espresso) - Espresso to write concise, beautiful, and reliable Android UI tests.
 
 ## Package Structure
-
+```
 | --app
     | -- data
         | -- remote
@@ -41,7 +41,7 @@ It simply loads gitub data from an API and stores it in persistence storage. Git
     | -- annotations
     | -- domain
     | -- util
-    
+```   
 ## Architecture
 This app uses [***MVVM and Clean Architecture***](https://developer.android.com/jetpack/docs/guide#recommended-app-arch) architecture.
 
