@@ -2,9 +2,11 @@ package com.example.lookatxing.ui.main
 
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lookatxing.databinding.ActivityMainBinding
 import com.example.lookatxing.domain.github.Github
 import com.example.lookatxing.ui.BaseActivity
+import com.example.lookatxing.ui.InfiniteRecyclerViewScrollListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,17 +23,25 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     }
 
     override fun setupViewModel() {
-        mViewModel.retrieveListGitHub()
+        mViewModel.retrieveListGitHub(0)
     }
 
     override fun setupObservers() {
         mViewModel.gitHubRepository.observe(this, { result: List<Github> ->
-            githubListAdapter.submitList(result)
+            if (result.isNotEmpty()) {
+                githubListAdapter.submitList(result)
+            }
         })
 
         mViewBinding.homeGithubRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = githubListAdapter
+            addOnScrollListener(object :
+                InfiniteRecyclerViewScrollListener(this.layoutManager as LinearLayoutManager) {
+                override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                    mViewModel.retrieveListGitHub(page)
+                }
+            })
         }
     }
 }

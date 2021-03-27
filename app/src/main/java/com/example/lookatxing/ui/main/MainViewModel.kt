@@ -24,9 +24,10 @@ class MainViewModel @Inject constructor(
 
     private var page = 0
 
-    fun retrieveListGitHub() {
+    fun retrieveListGitHub(page: Int) {
+        Log.d("retrieveListGitHub", "Page $page")
         viewModelScope.launch {
-            handleListGitHub(getGithubListUseCase.execute(++page))
+            handleListGitHub(getGithubListUseCase.execute(page))
         }
     }
 
@@ -34,7 +35,11 @@ class MainViewModel @Inject constructor(
         when (result) {
             is ActionResult.Success -> {
                 if (result.succeeded) {
-                    _gitHubRepository.value = result.data
+                    val finalListOfRepos = mutableListOf<Github>().apply {
+                        _gitHubRepository.value?.let { addAll(it) }
+                        addAll(result.data)
+                    }
+                    _gitHubRepository.value = finalListOfRepos
                 }
             }
             is ActionResult.Error -> {
