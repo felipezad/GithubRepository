@@ -1,5 +1,8 @@
 package com.example.lookatxing.ui.main
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -59,6 +62,11 @@ class GithubItemAdapter(
                 }
             }
 
+            binding.itemContainer.setOnLongClickListener { view ->
+                explicitIntentForBrowser(view.context, gitItem.nameRepository, gitItem.owner)
+                true
+            }
+
             requestManager
                 .load(gitItem.ownerAvatarURL)
                 .placeholder(R.drawable.ic_launcher_foreground)
@@ -66,6 +74,17 @@ class GithubItemAdapter(
                 .into(binding.githubProfilePicture)
                 .clearOnDetach()
         }
-    }
 
+        private fun explicitIntentForBrowser(
+            context: Context,
+            githubRepo: String,
+            ownerLogin: String
+        ) {
+            val githubWeb: Uri = Uri.parse("http://github.com/$ownerLogin/$githubRepo")
+            val intent = Intent(Intent.ACTION_VIEW, githubWeb)
+            if (intent.resolveActivity(context.packageManager) != null) {
+                context.startActivity(intent)
+            }
+        }
+    }
 }
