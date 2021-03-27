@@ -34,9 +34,11 @@ class GithubRepository(
 
     override suspend fun getElementsFromApi(page: Int): ActionResult<List<Github>> {
         return try {
-            val value: List<Github> = mapper.mapTo(xingService.requestRepos())
-            withContext(dispatcherThread) { value.forEach { insertDataIntoRoom(it) } }
-            ActionResult.Success(value)
+            withContext(dispatcherThread) {
+                val value: List<Github> = mapper.mapTo(xingService.requestRepos())
+                value.forEach { insertDataIntoRoom(it) }
+                ActionResult.Success(value)
+            }
         } catch (e: Exception) {
             ActionResult.Error(e)
         }

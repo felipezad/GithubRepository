@@ -18,15 +18,22 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         setContentView(R.layout.activity_main)
     }
 
+    override fun onResume() {
+        super.onResume()
+        mViewModel.retrieveListGitHub()
+        mViewBinding.textViewAnswer.text = "Um outro texto"
+    }
+
     override fun getViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
     override fun setupViewModel() {
-        mViewModel.retrieveListGitHub()
+
     }
 
     override fun setupView() {
+
         mViewModel.gitHubRepository.observe(this, { result: List<Github> ->
             mViewBinding.textViewAnswer.text = "Success ${result.size}"
         })

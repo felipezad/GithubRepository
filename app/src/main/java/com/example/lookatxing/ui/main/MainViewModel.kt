@@ -10,7 +10,6 @@ import com.example.domain.succeeded
 import com.example.lookatxing.domain.github.GetGitHubListUseCase
 import com.example.lookatxing.domain.github.Github
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,8 +25,8 @@ class MainViewModel @Inject constructor(
     private var page = 0
 
     fun retrieveListGitHub() {
-        viewModelScope.launch(Dispatchers.IO) {
-            getGithubListUseCase.execute(++page)
+        viewModelScope.launch {
+            handleListGitHub(getGithubListUseCase.execute(++page))
         }
     }
 
