@@ -4,8 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
+import com.bumptech.glide.RequestManager
+import javax.inject.Inject
 
 abstract class BaseActivity<VM : ViewModel, VB : ViewBinding> : AppCompatActivity() {
+
+    @Inject
+    protected lateinit var requestManagerGlide: RequestManager
 
     protected abstract val mViewModel: VM
 
