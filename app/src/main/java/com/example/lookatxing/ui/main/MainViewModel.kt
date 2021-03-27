@@ -48,8 +48,7 @@ class MainViewModel @Inject constructor(
                         addAll(result.data)
                     }
                     val shouldUpdate =
-                        !(_gitHubRepository.value?.let { finalListOfRepos.containsAll(it) }
-                            ?: false)
+                        !(_gitHubRepository.value?.containsAll(finalListOfRepos) ?: false)
                     if (shouldUpdate) {
                         _gitHubRepository.value = finalListOfRepos.toList()
                     }
