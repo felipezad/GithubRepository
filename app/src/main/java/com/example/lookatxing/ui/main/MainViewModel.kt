@@ -20,13 +20,15 @@ class MainViewModel @Inject constructor(
     private val getLocalGithubListUseCase: GetGitHubListLocalUseCase
 ) : ViewModel() {
     private val _gitHubRepository = MutableLiveData<List<Github>>()
-
     val gitHubRepository: LiveData<List<Github>>
         get() = _gitHubRepository
 
-    private var page = 0
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
 
     fun retrieveListGitHub(page: Int) {
+        _isLoading.value = true
         Log.d("retrieveListGitHub", "Page $page")
         viewModelScope.launch {
             handleListGitHub(getGithubListUseCase.execute(page))
@@ -34,6 +36,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun retrieveListFromRoom() {
+        _isLoading.value = true
         viewModelScope.launch {
             handleListGitHub(getLocalGithubListUseCase.execute())
         }
@@ -59,9 +62,10 @@ class MainViewModel @Inject constructor(
                 retrieveListFromRoom()
                 Log.e("handleListGitHub", result.exception.toString())
             }
-            is ActionResult.Loading -> {
+            else -> {
                 Log.d("handleListGitHub", ActionResult.Loading.toString())
             }
         }
+        _isLoading.value = false
     }
 }

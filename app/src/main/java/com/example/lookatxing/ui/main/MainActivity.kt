@@ -33,6 +33,14 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
             }
         })
 
+        mViewModel.isLoading.observe(this, { isLoading ->
+            if (isLoading) {
+                mViewBinding.contentLoadingProgressBar.show()
+            } else {
+                mViewBinding.contentLoadingProgressBar.hide()
+            }
+        })
+
         mViewBinding.homeGithubRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = githubListAdapter
