@@ -1,8 +1,6 @@
 package com.example.lookatxing.ui.main
 
-import android.os.Bundle
 import androidx.activity.viewModels
-import com.example.lookatxing.R
 import com.example.lookatxing.databinding.ActivityMainBinding
 import com.example.lookatxing.domain.github.Github
 import com.example.lookatxing.ui.BaseActivity
@@ -13,27 +11,15 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override val mViewModel: MainViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mViewModel.retrieveListGitHub()
-        mViewBinding.textViewAnswer.text = "Um outro texto"
-    }
-
     override fun getViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
     override fun setupViewModel() {
-
+        mViewModel.retrieveListGitHub()
     }
 
-    override fun setupView() {
-
+    override fun setupObservers() {
         mViewModel.gitHubRepository.observe(this, { result: List<Github> ->
             mViewBinding.textViewAnswer.text = "Success ${result.size}"
         })

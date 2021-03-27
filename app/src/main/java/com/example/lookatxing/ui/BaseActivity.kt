@@ -15,12 +15,13 @@ abstract class BaseActivity<VM : ViewModel, VB : ViewBinding> : AppCompatActivit
 
     abstract fun setupViewModel()
 
-    abstract fun setupView()
+    abstract fun setupObservers()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mViewBinding = getViewBinding()
-        setupView()
+        setContentView(mViewBinding.root)
+        setupObservers()
         setupViewModel()
     }
 }
