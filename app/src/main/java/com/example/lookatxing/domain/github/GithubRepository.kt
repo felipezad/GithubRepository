@@ -46,8 +46,10 @@ class GithubRepository(
 
     override suspend fun getElementsFromDatabase(): ActionResult<List<Github>> {
         return try {
-            val value: List<Github> = xingDao.getRepositories()
-            ActionResult.Success(value)
+            withContext(dispatcherThread) {
+                val value: List<Github> = xingDao.getRepositories()
+                ActionResult.Success(value)
+            }
         } catch (e: Exception) {
             ActionResult.Error(e)
         }
