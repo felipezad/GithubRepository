@@ -56,12 +56,13 @@ class GithubItemAdapter(
             binding.githubDescription.text = gitItem.description
             binding.githubOwner.text = gitItem.owner
 
-            if (gitItem.fork) {
-                with(binding.itemContainer) {
+            with(binding.itemContainer) {
+                if (gitItem.fork) {
                     setBackgroundColor(resources.getColor(R.color.teal_200, null))
+                } else {
+                    setBackgroundColor(resources.getColor(R.color.white, null))
                 }
             }
-
             binding.itemContainer.setOnLongClickListener { view ->
                 explicitIntentForBrowser(view.context, gitItem.nameRepository, gitItem.owner)
                 true
