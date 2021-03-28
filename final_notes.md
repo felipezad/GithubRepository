@@ -3,11 +3,14 @@
 **LookAtXing** is a sample app Android application 📱 built to demonstrate use of Modern Android development tools️. 
 
 ## About
-It simply loads gitub data from an API and stores it in persistence storage. Github repositories will be always saved in the  local database.
+It simply loads github data from an API and stores it in persistence storage. Github repositories will be always saved in the local database.
 
+
+## Features
 - The app works offline but it needs to load data at least once from the API.
-- You can click in git hub repositories to open the browser with their respective github link.
+- You can long press in any git hub repositories card to open the browser with their respective github link.
 - The app supports portrait and landscape position
+- The repositories with green background means they were forked at least once
 
 ## Built With 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
