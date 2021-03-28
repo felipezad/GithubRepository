@@ -39,9 +39,9 @@ class MainViewModelTest {
     @MockK
     lateinit var getGitHubListUseCase: GetGitHubListUseCase
 
-    lateinit var subject: MainViewModel
+    private lateinit var subject: MainViewModel
 
-    lateinit var observerGithubRepositories: Observer<List<Github>>
+    private lateinit var observerGithubRepositories: Observer<List<Github>>
 
     @Before
     fun setUp() {

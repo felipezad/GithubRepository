@@ -208,25 +208,6 @@ data class GitHubResponseItem(
 )
 
 @JsonClass(generateAdapter = true)
-data class License(
-    @Json(name = "key")
-    @WhenNullReturnEmpty
-    val key: String = "",
-    @Json(name = "name")
-    @WhenNullReturnEmpty
-    val name: String = "",
-    @Json(name = "node_id")
-    @WhenNullReturnEmpty
-    val nodeId: String = "",
-    @Json(name = "spdx_id")
-    @WhenNullReturnEmpty
-    val spdxId: String = "",
-    @Json(name = "url")
-    @WhenNullReturnEmpty
-    val url: String = ""
-)
-
-@JsonClass(generateAdapter = true)
 data class Owner(
     @Json(name = "avatar_url")
     @WhenNullReturnEmpty

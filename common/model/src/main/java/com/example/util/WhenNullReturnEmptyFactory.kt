@@ -24,8 +24,7 @@ object WhenNullReturnEmptyFactory : JsonAdapter.Factory {
     private object Adapter : JsonAdapter<String>() {
         override fun fromJson(reader: JsonReader): String? {
             with(reader) {
-                val peek = peek()
-                return when (peek) {
+                return when (peek()) {
                     JsonReader.Token.NULL -> {
                         nextNull<Any>()
                         ""

@@ -22,7 +22,7 @@ class GetGitHubListUseCaseTest {
     @MockK
     lateinit var mockGithubRepository: GithubRepository
 
-    lateinit var getGitHubListUseCase: GetGitHubListUseCase
+    private lateinit var getGitHubListUseCase: GetGitHubListUseCase
 
     @Before
     fun setUp() {
